@@ -14,17 +14,32 @@ app.get("/brukere", (request, response) => {
     
     response.send(stmt)
 })
-app.post("/sendInn", (request, response) => {
+
+
+app.post("/addUser", (request, response) => {
     const sql = db.prepare('INSERT INTO User (name,password,savedata) VALUES (?,?,?)')
-     
+    
     const info = sql.run(request.body.name, request.body.password, request.body.savedata)
     console.log("Amount changes done: " + info.changes)
     console.log("lastInsertRowID: " + info.lastInsertRowID)
     
   
+    response.redirect("http://localhost:3000/")
+})
+
+app.post("/login", (request, response) => {
+    let stmt = db.prepare("SELECT * FROM User")
+    console.log(stmt)
+    if (request.body.name === db.prepare("SELECT name FROM User")){
+        console.log("letss gooo")
+    }
+    else {
+        console.log("shit")
+    }
+  
     response.redirect("back")
 })
-"hei noa"
+
 
 app.listen("3000", () => {
     console.log("UP!")
