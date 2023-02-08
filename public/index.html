@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="css/clicker.css"/>
+    <title>CLickergame</title>
+</head>
+<body>
+    <div class="container">
+        <div class="FISK">
+            <button id="btn"><img src="img/fisk.jpg"></button>
+        </div>
+        <div class="Score">
+            <h1 id="score">0</h1>
+            <h3 id="scoreps">0</h3>
+        </div>
+        <div class="BUildings">
+            <h2>Bygninger</h2>
+            <button id="fisker">Fisker</button><p id="kfisk"></p>
+        </div>
+        <div class="Upgrads">
+            <h2>Oppgraderinger</h2>
+            <button id="upc1">Oppgrader Fiskestang</button><p id="opgft"></p>
+            <button id="fiskerupg">Oppgrader Fiskeren</button><p id="opgfr"> </p>
+
+        </div>
+        <div class="stats"></div>
+        <div class="Savelogin">
+
+            <a href="http://localhost:3000/login.html"><button>login</button></a>
+            <a href="http://localhost:3000/register.html"><button>Register</button></a>
+            
+            <button id="savegame">Save</button>
+
+        </div>
+        <div class="achievements"></div>
+        <div class="Leaderboard"></div>
+        <div class="AD"></div>
+      </div>
+      <br><br><br><br>
+      <form action="/sendInn" method="POST">
+        <input type="text" name="name" id="name">
+          <button>test</button>
+      </form>
+</body>
+</html>
