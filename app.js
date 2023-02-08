@@ -24,7 +24,7 @@ app.post("/sendInn", (request, response) => {
   
     response.redirect("back")
 })
-
+"hei noa"
 
 app.listen("3000", () => {
     console.log("UP!")
