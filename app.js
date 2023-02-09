@@ -28,16 +28,17 @@ app.post("/addUser", (request, response) => {
 })
 
 app.post("/login", (request, response) => {
-    let stmt = db.prepare("SELECT * FROM User")
-    console.log(stmt)
-    if (request.body.name === db.prepare("SELECT name FROM User")){
-        console.log("letss gooo")
+    const sql = db.prepare("SELECT * FROM User WHERE name=(?)")
+    const results = sql.get(request.body.name)
+    if (request.body.password === results.password){
+       response.redirect("http://localhost:3000/")
     }
     else {
         console.log("shit")
+        response.redirect("back")
     }
   
-    response.redirect("back")
+    
 })
 
 
