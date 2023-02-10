@@ -1,3 +1,4 @@
+//variabler
 let Score = document.querySelector("#score")
 let Scoreps = document.querySelector("#scoreps")
 let Clicked = document.querySelector("#btn")
@@ -11,6 +12,9 @@ Fiskerupg.addEventListener("click",fiskerrupg)
 let upc1c = document.querySelector("#opgft")
 let fiskerrc = document.querySelector("#kfisk")
 let fiskerupgc =document.querySelector("#opgfr")
+
+
+
 
 async function hentBrukere() {
     let dbresult = await fetch("/brukere")
@@ -37,6 +41,17 @@ async function hentBrukere() {
 save = { 
     perclick : 1,
     Balance : 0,
+    upc1c : 10,
+    spc : 0,
+    fiskerpt :1 ,
+    fiskerantall: 0,
+    fiskerrc: 100,
+    fiskerupgc : 100
+}
+
+save2 = { 
+    perclick : 2,
+    Balance : 500,
     upc1c : 10,
     spc : 0,
     fiskerpt :1 ,
