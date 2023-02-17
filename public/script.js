@@ -1,17 +1,19 @@
 //variabler
-let Score = document.querySelector("#score")
-let Scoreps = document.querySelector("#scoreps")
+
+
+let Score = document.querySelector("#score");
+let Scoreps = document.querySelector("#scoreps");
 let Clicked = document.querySelector("#btn")
-Clicked.addEventListener("click",bob)
+Clicked.addEventListener("click",bob);
 let Upc1 = document.querySelector("#upc1")
-Upc1.addEventListener("click",upc1)
+Upc1.addEventListener("click",upc1);
 let Fisker = document.querySelector("#fisker")
-Fisker.addEventListener("click",fiskerr)
+Fisker.addEventListener("click",fiskerr);
 let Fiskerupg = document.querySelector("#fiskerupg")
-Fiskerupg.addEventListener("click",fiskerrupg)
-let upc1c = document.querySelector("#opgft")
-let fiskerrc = document.querySelector("#kfisk")
-let fiskerupgc =document.querySelector("#opgfr")
+Fiskerupg.addEventListener("click",fiskerrupg);
+let upc1c = document.querySelector("#opgft");
+let fiskerrc = document.querySelector("#kfisk");
+let fiskerupgc = document.querySelector("#opgfr");
 
 
 

@@ -26,3 +26,39 @@
 .Leaderboard { grid-area: Leaderboard; }
 
 .AD { grid-area: AD; }
+
+.container-log_and_reg{
+  display: grid;
+  grid-auto-columns: repeat(2);
+  grid-auto-rows: repeat(2);
+  grid-gap: 5px;
+  justify-items: stretch;
+  align-items: stretch;
+  margin-left: 35%;
+  margin-right: 90%;
+  margin-top: 5%;
+}
+
+#loginshow{
+  width: 150px;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#login {
+  display: block;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+#registershow{
+  width: 150px;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+#register {
+  display: block;
+  grid-column: 3;
+  grid-row: 2;
+}
