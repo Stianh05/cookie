@@ -46,7 +46,7 @@
 }
 
 #login {
-  display: block;
+  display: none;
   grid-column: 2;
   grid-row: 2;
 }

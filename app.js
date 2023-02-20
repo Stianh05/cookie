@@ -3,11 +3,11 @@ const sqlite3 = require('better-sqlite3')
 const db = sqlite3('coockie-clicker.db', {verbose:console.log})
 const path = require("path")
 const session = require('express-session')
-
 const app = express()
 
 app.use(express.static(path.join(__dirname, "/public")))
 app.use(express.urlencoded({ extended: true }));
+app.use("/savegame",express.json());
 
 app.use(session({
     secret: "Keep it secret",
@@ -52,12 +52,17 @@ app.post("/login", (request, response) => {
         response.redirect("/")
     }
     else {
-        console.log("shit")
         request.session.logedIn = false
         response.redirect("back")
     }
   
     
+})
+
+
+app.post("/savegame", (request, response) => {
+    console.log(request.body);
+    response.json({ message: "Data received" });
 })
 
 

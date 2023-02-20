@@ -15,8 +15,7 @@ let upc1c = document.querySelector("#opgft");
 let fiskerrc = document.querySelector("#kfisk");
 let fiskerupgc = document.querySelector("#opgfr");
 
-
-
+const saveBtn = document.getElementById("saveBtn");
 
 async function hentBrukere() {
     let dbresult = await fetch("/brukere")
@@ -51,16 +50,29 @@ save = {
     fiskerupgc : 100
 }
 
-save2 = { 
-    perclick : 2,
-    Balance : 500,
-    upc1c : 10,
-    spc : 0,
-    fiskerpt :1 ,
-    fiskerantall: 0,
-    fiskerrc: 100,
-    fiskerupgc : 100
-}
+saveBtn.addEventListener("click", async () => {
+    // Convert the save data to JSON format
+    const saveData = JSON.stringify(save);
+   console.log(saveData)
+  
+    // Send the JSON data to the server using fetch
+    const response = await fetch("/savegame", {
+      method: "POST",
+      body: saveData,    
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+  
+    // Check if the request was successful
+    if (response.ok) {
+      // Log the response data on the server
+      const responseData = await response.json();
+      console.log(responseData);
+    }
+  });
+
+
 
 let perclick = save.perclick
 let Balance = save.Balance
