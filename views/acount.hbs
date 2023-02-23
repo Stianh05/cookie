@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/clicker.css"/>
+    <title>Login</title>
+</head>
+<body>
+    <div class="info">
+            <a href="http://localhost:3000/"><button>Home</button></a>
+            <a href="http://localhost:3000/login and register.html"><button>Login and register</button></a>
+            <form action="acount"><button>Acount</button></form>
+            <form action="logout"><button>Log out</button></form>
+    </div>
+    <h1>Acount info</h1>
+    <p>Username: {{User.name}}</p>
+    <p>Password(hashed): {{User.password}}</p>
+    <p><a href="/delete?id={{User.id}}">Press here to delete user</a></p>
+   
+</body>
+</html>

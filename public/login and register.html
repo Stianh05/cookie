@@ -9,12 +9,17 @@
     <title>Login</title>
 </head>
 <body>
+    <div class="info">
+        <a href="http://localhost:3000/"><button>Home</button></a>
+            <a href="http://localhost:3000/login and register.html"><button>Login and register</button></a>
+            <form action="acount"><button>Acount</button></form>
+      </div>     
 <div class="container-log_and_reg">
     <button id="loginshow">Login</button>
     <div id="login">
         <form action="/login" method="post">
-            <label>Username: </label><input type="text" name="name"><br>
-            <label>Password: </label><input type="password" name="password"><br>
+            <label>Username: </label><input type="text" name="name" required><br>
+            <label>Password: </label><input type="password" name="password" required><br>
             <button>Login</button>
             </form>
     </div>
@@ -22,8 +27,8 @@
     <button id="registershow">Register</button>
     <div id="register">
         <form action="/addUser" method="post">
-            <label>Username: </label><input type="text" name="name"><br>
-            <label>Password: </label><input type="password" name="password"><br>
+            <label>Username: </label><input type="text" name="name" required><br>
+            <label>Password: </label><input type="password" name="password" required><br>
             <button>Create new user</button>
         </form>     
     </div>
