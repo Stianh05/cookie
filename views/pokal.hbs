@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/clicker.css"/>
+    <title>Login</title>
+</head>
+<body>
+<div class="container_pokal">
+    <div id="bronce">
+    {{#each Bronce}}
+        <p>{{this.type}} - {{this.name}}</p>
+    {{/each}}
+    </div>
+
+    <div id="silver">
+    {{#each Silver}}
+        <p>{{this.type}} - {{this.name}}</p>
+    {{/each}}
+    </div>
+
+    <div id="gold">
+    {{#each Gold}}
+        <p>{{this.type}} - {{this.name}}</p>
+    {{/each}}
+
+    </div>
+
+    <div id="plat">
+    {{#each Plat}}
+        <p>{{this.type}} - {{this.name}}</p>
+    {{/each}}
+
+    </div>
+
+    <div id="diamond">
+    {{#each Diamond}}
+        <p>{{this.type}} - {{this.name}}</p>
+    {{/each}}
+    </div>
+</div>
+</body>
+</html>

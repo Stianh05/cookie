@@ -12,12 +12,27 @@
             <a href="http://localhost:3000/"><button>Home</button></a>
             <a href="http://localhost:3000/login and register.html"><button>Login and register</button></a>
             <form action="acount"><button>Acount</button></form>
+            <form action="pokalSite"><button>Pokaler</button></form>
             <form action="logout"><button>Log out</button></form>
     </div>
     <h1>Acount info</h1>
     <p>Username: {{User.name}}</p>
     <p>Password(hashed): {{User.password}}</p>
     <p><a href="/delete?id={{User.id}}">Press here to delete user</a></p>
-   
+    
+    <br>
+    
+    <form action="pokal">
+    <label>Velg deg en pokal:</label>
+    <select name="pokal" id="pokal">
+            <option value="1">Bronce</option>
+            <option value="2">Silver</option>
+            <option value="4">Gold</option>
+            <option value="5">Plat</option>
+            <option value="3">Diamond</option>
+    </select>
+
+        <button>Select</button>
+    </form>
 </body>
 </html>

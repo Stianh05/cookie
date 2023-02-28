@@ -1,4 +1,5 @@
-.container {  display: grid;
+.container {  
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 0px 0px;
@@ -65,4 +66,12 @@
   display: none;
   grid-column: 3;
   grid-row: 2;
+}
+
+.container_pokal {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 0px 0px;
+  margin-left: 5%;
 }
