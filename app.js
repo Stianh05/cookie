@@ -26,6 +26,7 @@ app.use(session({
 
 
 let Usernow = ""
+let UserIdNow = ""
 
 /*
 app.get("/brukere", (request, response) => {
@@ -38,13 +39,16 @@ app.get("/brukere", (request, response) => {
 
 app.get("/acount", (request, response) => {
     if (request.session.logedIn == true) {
-        const sql = db.prepare("SELECT * FROM User WHERE name=(?)")
-  
-        const User = sql.get(Usernow)
+        const sql = db.prepare("SELECT * FROM User WHERE id=(?)")
+        const User = sql.get(UserIdNow)
+
+        const run = db.prepare("SELECT Pokal.type FROM User_Pokal INNER JOIN User ON User_Pokal.User_id = User.id INNER JOIN Pokal ON User_Pokal.Pokal_id = Pokal.id WHERE User_Pokal.User_id=(?);")
+        const dinPokal = run.all(UserIdNow)
 
         response.render("acount.hbs", {
             title: "Acount",
-            User: User
+            User: User,
+            dinPokal: dinPokal
         })
     }
     else {
@@ -54,14 +58,25 @@ app.get("/acount", (request, response) => {
 
 
 app.post("/addUser", (request, response) => {
-    const sql = db.prepare('INSERT INTO User (name,password,savedata) VALUES (?,?,?)')
-    const hashedPassword = bcrypt.hashSync(request.body.password, 10)
-    const info = sql.run(request.body.name, hashedPassword, request.body.savedata)
+    const username = request.body.name
 
-    Usernow = request.body.name
+    const sql = db.prepare("SELECT * FROM User WHERE name=(?)")
+    const userRow = sql.get(username)
+    
+    if (userRow == undefined){ //bruker finnes ikke, lager ny
+        const sql = db.prepare('INSERT INTO User (name,password,savedata) VALUES (?,?,?)')
+        const hashedPassword = bcrypt.hashSync(request.body.password, 10)
+        const info = sql.run(request.body.name, hashedPassword, request.body.savedata)
 
-    request.session.logedIn = true
-    response.redirect("/")
+        Usernow = username
+        
+        const tbl = db.prepare("SELECT * FROM User WHERE name=(?)")//hent id fra ny bruker
+        const User = tbl.get(username)
+        UserIdNow = User.id
+
+        request.session.logedIn = true
+        response.redirect("/")
+    }
 })
 
 
@@ -73,9 +88,11 @@ app.post("/login", (request, response) => {
   
     const userRow = sql.get(username)
     const isCorrect  = bcrypt.compareSync(password, userRow.password);
-    
+   
+  
     if (isCorrect == true){
     Usernow = request.body.name
+    UserIdNow = userRow.id
     request.session.logedIn = true
     response.redirect("http://localhost:3000")
     }
@@ -88,6 +105,7 @@ app.post("/login", (request, response) => {
 
 app.get("/logout", (request, response) => {
     Usernow = ""
+    UserIdNow = ""
     request.session.logedIn = false
     response.redirect("http://localhost:3000/login%20and%20register.html")
 })
@@ -103,22 +121,15 @@ app.get('/delete', (request, response) => {
 
 
 app.get('/pokal', (request, response) => {
-    const selectedPokal = request.query.pokal;
+    const selectedPokal = request.query.pokal;//Henter valgte type pokal Bronce etc som id
 
     const sql = db.prepare("SELECT * FROM User WHERE name=(?)")
     const Userid = sql.get(Usernow)
-    
-    const tbl_User_Pokal = db.prepare("SELECT Pokal_id FROM User_Pokal WHERE User_id=(?)")
-    const Pokal_id = tbl_User_Pokal.get(Userid.id)
 
-    if (Pokal_id == undefined){ //Har ikke pokal fra før
-        const sql = db.prepare('INSERT INTO User_Pokal (Pokal_id,User_id) VALUES (?,?)')
-        const info = sql.run(selectedPokal,Userid.id)
-    }
-    else{
-        const sql = db.prepare('UPDATE User_Pokal SET Pokal_id=(?) WHERE User_id=(?)')
-        const info = sql.run(selectedPokal,Userid.id)
-    }
+    const INSPokal = db.prepare('INSERT INTO User_Pokal (Pokal_id,User_id) VALUES (?,?)')
+    INSPokal.run(selectedPokal,Userid.id)
+
+   
     
     response.redirect("back")
 })
@@ -145,12 +156,22 @@ app.get("/pokalSite", (request, response) => {
 })
 
 
+
+app.post("/nameUpdate", (request, response) => {
+    const newName = request.body.name
+    const sql = db.prepare('UPDATE User SET name=(?) WHERE id=(?)')
+    sql.run(newName,UserIdNow)
+
+    Usernow = newName
+    response.redirect("back")
+})
+
+
 /*
 app.post("/savegame", (request, response) => {
     response.json({ message: "Data received" });
 })
 */
-
 
 app.listen("3000", () => {
     console.log("UP!")

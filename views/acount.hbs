@@ -16,10 +16,19 @@
             <form action="logout"><button>Log out</button></form>
     </div>
     <h1>Acount info</h1>
-    <p>Username: {{User.name}}</p>
+    <div id="name1">
+        <p>Username: {{User.name}}</p>
+        <p>User id: {{User.id}}</p>
+    </div>
+    <div id="name2">    
+     <form action="/nameUpdate" method="post">
+            <label>New username:</label><input type="text" name="name"><br>
+            <button>Update username</button>
+    </form>
+    </div>
     <p>Password(hashed): {{User.password}}</p>
     <p><a href="/delete?id={{User.id}}">Press here to delete user</a></p>
-    
+   
     <br>
     
     <form action="pokal">
@@ -33,6 +42,16 @@
     </select>
 
         <button>Select</button>
-    </form>
+    </form><br>
+
+   <div class="din_pokal">
+    <h2>Dine pokaler:</h2>
+    <div>
+    {{#each dinPokal}}
+        <p>{{this.type}}</p>
+    {{/each}}
+    </div>
+</div>
+
 </body>
 </html>
