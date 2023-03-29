@@ -14,7 +14,7 @@ app.use(express.static(publicDirectoryPath))
 app.use(express.urlencoded({ extended: true }));
 app.use("/savegame",express.json());
 
-// Setter opp templating med Handlebars
+// Setter opp templating med Handlebars 
 const viewPath = path.join(__dirname, "/views")
 app.set("view engine", hbs)
 app.set('views',viewPath)

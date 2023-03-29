@@ -68,13 +68,26 @@
   grid-row: 2;
 }
 
-.container_pokal {
+
+
+.Acount {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(1, 1fr);
-  gap: 0px 0px;
-  margin-left: 5%;
-} 
+  gap: 10% 10%;
+  grid-auto-flow: row;
+}
+
+.Acount_info{
+  grid-column: 1;
+  grid-row: 1;
+}
+
+
+.din_pokal{
+  grid-column: 2;
+  grid-row: 1;
+}
 
 
 #name2 {
@@ -90,3 +103,12 @@
   margin-left: 5px;
  }
 
+
+
+ .container_pokal {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 0px 0px;
+  margin-left: 5%;
+}
